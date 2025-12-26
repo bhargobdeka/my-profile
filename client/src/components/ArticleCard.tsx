@@ -16,9 +16,16 @@ export function ArticleCard({ article, index }: { article: Article; index: numbe
       className="group block bg-card rounded-xl border border-border p-5 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300"
     >
       <div className="flex flex-col h-full">
-        <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3 font-mono">
-          <Calendar size={14} />
-          <span>{new Date(article.pubDate).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+        <div className="flex items-center justify-between gap-2 text-xs text-muted-foreground mb-3 font-mono">
+          <div className="flex items-center gap-2">
+            <Calendar size={14} />
+            <span>{new Date(article.pubDate).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+          </div>
+          {article.client && (
+            <span className="bg-primary/10 text-primary px-2 py-0.5 rounded-full font-semibold">
+              {article.client}
+            </span>
+          )}
         </div>
         
         <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors leading-tight">

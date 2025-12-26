@@ -134,20 +134,22 @@ export class DatabaseStorage implements IStorage {
 
     const clientArticles: Article[] = [
       {
-        title: "How to build a RAG pipeline from scratch in 2026 for Kapa.ai",
+        title: "How to build a RAG pipeline from scratch in 2026",
         link: "https://kapa.ai/blog",
         pubDate: "2026-01-01",
         thumbnail: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80",
         author: "Bhargob Deka",
-        categories: ["RAG", "Kapa.ai", "AI Engineering"]
+        categories: ["RAG", "AI Engineering"],
+        client: "Kapa.ai"
       },
       {
-        title: "Evaluating Python Libraries for Converting PDF to Text — A 2026 Comparison and Evaluation Guide for Unstract",
+        title: "Evaluating Python Libraries for Converting PDF to Text — A 2026 Comparison and Evaluation Guide",
         link: "https://unstract.com/blog",
         pubDate: "2026-01-15",
         thumbnail: "https://images.unsplash.com/photo-1558494949-efc02570fbc9?w=800&q=80",
         author: "Bhargob Deka",
-        categories: ["Python", "Unstract", "Data Processing"]
+        categories: ["Python", "Data Processing"],
+        client: "Unstract"
       }
     ];
 

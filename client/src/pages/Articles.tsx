@@ -24,10 +24,34 @@ export default function Articles() {
           Failed to load articles.
         </div>
       ) : (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {articles?.map((article, idx) => (
-            <ArticleCard key={idx} article={article} index={idx} />
-          ))}
+        <div className="space-y-16">
+          {/* Client Projects Section */}
+          {articles?.filter(a => a.client).length > 0 && (
+            <section>
+              <h2 className="text-2xl font-bold mb-8 flex items-center gap-2">
+                <span className="w-8 h-1 bg-primary rounded-full"></span>
+                Client Technical Writing
+              </h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {articles.filter(a => a.client).map((article, idx) => (
+                  <ArticleCard key={idx} article={article} index={idx} />
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* Personal/Medium Section */}
+          <section>
+            <h2 className="text-2xl font-bold mb-8 flex items-center gap-2">
+              <span className="w-8 h-1 bg-primary rounded-full"></span>
+              Latest from Medium
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {articles?.filter(a => !a.client).map((article, idx) => (
+                <ArticleCard key={idx} article={article} index={idx} />
+              ))}
+            </div>
+          </section>
         </div>
       )}
     </div>

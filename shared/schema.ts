@@ -47,6 +47,7 @@ export const articleSchema = z.object({
   thumbnail: z.string().optional(),
   author: z.string(),
   categories: z.array(z.string()).optional(),
+  client: z.string().optional(),
 });
 export type Article = z.infer<typeof articleSchema>;
 
