@@ -9,7 +9,7 @@ export default function Contact() {
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Get in Touch</h1>
           <p className="text-xl text-muted-foreground mb-12">
             Have a project in mind or want to discuss a potential collaboration?
-            I'm currently available for freelance work and consulting.
+            I'm currently available for freelance work, consulting and technical writing for AI/ML projects.
           </p>
 
           <div className="space-y-8">
@@ -19,7 +19,7 @@ export default function Contact() {
               </div>
               <div>
                 <h3 className="font-bold text-lg">Email Me</h3>
-                <p className="text-muted-foreground">hello@example.com</p>
+                <p className="text-muted-foreground">bhargobdeka11@gmail.com</p>
               </div>
             </div>
 
@@ -29,7 +29,7 @@ export default function Contact() {
               </div>
               <div>
                 <h3 className="font-bold text-lg">Location</h3>
-                <p className="text-muted-foreground">San Francisco, CA (Remote available)</p>
+                <p className="text-muted-foreground">Montreal, Canada (Remote available)</p>
               </div>
             </div>
           </div>
@@ -37,11 +37,11 @@ export default function Contact() {
           <div className="mt-12 pt-12 border-t border-border">
             <h3 className="font-bold text-lg mb-4">Connect on Social</h3>
             <div className="flex gap-4">
-              <a href="#" className="p-3 bg-card border border-border rounded-full hover:border-primary hover:text-primary transition-all">
+              <a href="https://www.linkedin.com/in/bhargobdeka/" target="_blank" rel="noopener noreferrer" className="p-3 bg-card border border-border rounded-full hover:border-primary hover:text-primary transition-all">
                 <Linkedin size={20} />
               </a>
-              <a href="#" className="p-3 bg-card border border-border rounded-full hover:border-primary hover:text-primary transition-all">
-                <Twitter size={20} />
+              <a href="https://medium.com/@bhargobdeka11" target="_blank" rel="noopener noreferrer" className="p-3 bg-card border border-border rounded-full hover:border-primary hover:text-primary transition-all">
+                <PenTool size={20} />
               </a>
             </div>
           </div>
