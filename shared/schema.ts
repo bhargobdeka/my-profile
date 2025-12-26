@@ -1,4 +1,4 @@
-import { pgTable, text, serial, timestamp, boolean, jsonb } from "drizzle-orm/pg-core";
+import { pgTable, text, serial, timestamp, boolean, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -25,7 +25,7 @@ export const insertMessageSchema = createInsertSchema(messages).omit({
 export type Message = typeof messages.$inferSelect;
 export type InsertMessage = z.infer<typeof insertMessageSchema>;
 
-// Static Content Types (not in DB, but defined for API consistency)
+// Static Content Types
 export const projectSchema = z.object({
   id: z.string(),
   name: z.string(),
@@ -55,8 +55,23 @@ export const experienceSchema = z.object({
   company: z.string(),
   role: z.string(),
   period: z.string(),
-  description: z.string(),
+  location: z.string(),
+  description: z.string().optional(),
   achievements: z.array(z.string()),
   techStack: z.array(z.string()),
 });
 export type Experience = z.infer<typeof experienceSchema>;
+
+export const publicationSchema = z.object({
+  title: z.string(),
+  publisher: z.string(),
+  year: z.string(),
+  authors: z.string(),
+});
+export type Publication = z.infer<typeof publicationSchema>;
+
+export const skillCategorySchema = z.object({
+  category: z.string(),
+  skills: z.array(z.string()),
+});
+export type SkillCategory = z.infer<typeof skillCategorySchema>;

@@ -11,15 +11,12 @@ export async function registerRoutes(
   
   // Projects
   app.get(api.projects.list.path, async (req, res) => {
-    // In a real implementation, we would fetch from GitHub API here using credentials
-    // For now, we use the storage which returns static/mock data
     const projects = await storage.getProjects();
     res.json(projects);
   });
 
   // Articles
   app.get(api.articles.list.path, async (req, res) => {
-    // Similarly, fetch from Medium RSS here
     const articles = await storage.getArticles();
     res.json(articles);
   });
@@ -28,6 +25,18 @@ export async function registerRoutes(
   app.get(api.experience.list.path, async (req, res) => {
     const experience = await storage.getExperience();
     res.json(experience);
+  });
+
+  // Publications
+  app.get(api.publications.list.path, async (req, res) => {
+    const publications = await storage.getPublications();
+    res.json(publications);
+  });
+
+  // Skills
+  app.get(api.skills.list.path, async (req, res) => {
+    const skills = await storage.getSkills();
+    res.json(skills);
   });
 
   // Contact

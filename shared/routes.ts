@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { insertMessageSchema, projectSchema, articleSchema, experienceSchema } from './schema';
+import { insertMessageSchema, projectSchema, articleSchema, experienceSchema, publicationSchema, skillSchema } from './schema';
 
-export { insertMessageSchema, projectSchema, articleSchema, experienceSchema };
+export { insertMessageSchema, projectSchema, articleSchema, experienceSchema, publicationSchema, skillSchema };
 
 export const errorSchemas = {
   validation: z.object({
@@ -41,6 +41,24 @@ export const api = {
       path: '/api/experience',
       responses: {
         200: z.array(experienceSchema),
+      },
+    },
+  },
+  publications: {
+    list: {
+      method: 'GET' as const,
+      path: '/api/publications',
+      responses: {
+        200: z.array(publicationSchema),
+      },
+    },
+  },
+  skills: {
+    list: {
+      method: 'GET' as const,
+      path: '/api/skills',
+      responses: {
+        200: z.array(skillSchema),
       },
     },
   },

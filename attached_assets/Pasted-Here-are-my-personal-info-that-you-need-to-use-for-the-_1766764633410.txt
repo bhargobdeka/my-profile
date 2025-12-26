@@ -1,0 +1,64 @@
+Here are my personal info that you need to use for the website:
+BASIC INFO
+- Name: Bhargob Deka
+- Location: Montreal, Quebec, Canada
+- Current Title (short): Senior AI-ML Developer | Machine Learning Researcher | Technical Writer
+- Email: bhargobdeka11@gmail.com
+- GitHub: https://github.com/bhargobdeka
+- LinkedIn: https://www.linkedin.com/in/bhargobdeka/
+- Medium: https://medium.com/@bhargobdeka11
+
+HERO / ABOUT ME TEXT
+I'm a Senior AI/ML developer and Machine Learning Researcher with 5+ years of experience building forecasting, anomaly detection, and vertical AI agent systems. I’ve led AI agent and demand forecasting projects at Jesta I.S., developed probabilistic forecasting and anomaly detection models at Hydro-Quebec, and published in peer‑reviewed journals. I also write technical content on Generative AI, LLMs, and applied ML on Medium.
+
+SHORT TAGLINE
+Senior AI/ML Developer & Technical Writer | Building AI agents, forecasting systems, and RAG pipelines.
+
+GITHUB PROJECTS
+- Use my GitHub username to populate the Projects section:
+  * GitHub username: bhargobdeka
+  * If the template supports “featured projects”, feature these from my GitHub:
+    - RAG Code Assistant for Speckle (RAG assistant with LangGraph workflow)
+    - Multi-Modal RAG for Visual Question Answering (LangChain + GPT‑4 + Streamlit)
+    - Hotel Recommender using a Multi-Agent Framework (CrewAI + LangChain)
+    - Vision Transformer Houseplant Health Classifier (ViT + Gradio app)
+
+MEDIUM / ARTICLES
+- Medium handle: @bhargobdeka11
+- Medium RSS feed (if needed by the template): https://medium.com/feed/@bhargobdeka11
+- Description for Articles section:
+  I write technical articles on Generative AI, AI agents, RAG, and applied ML, focusing on practical, implementation‑oriented content for engineers and founders.
+
+EXPERIENCE (for Experience section)
+Current role:
+- Title: Senior AI-ML Developer
+- Company: Jesta I.S.
+- Location: Montreal, QC
+- Dates: Oct 2024 – Present
+- Highlights:
+  • Led design and development of the company’s first AI Agent, from Gradio prototype to FastAPI backend and React + TypeScript frontend, deployed via Azure DevOps.  
+  • Built an end‑to‑end demand forecasting system using LightGBM models, Kedro pipelines, AWS Batch, and MLflow for experiment tracking.  
+  • Developed AutoEncoder and Random Forest models for a fraud detection POC.
+
+Previous role:
+- Title: ML Researcher
+- Company: Hydro‑Quebec
+- Location: Montreal, QC
+- Dates: Jan 2023 – May 2024
+- Highlights:
+  • Developed probabilistic LSTM models for forecasting using data from 400+ dams across Quebec.  
+  • Combined forecasting with real‑time anomaly detection using switching Kalman filters, reducing false alarms by ~50%.  
+  • Built a PyTorch + MLflow framework on AWS and improved predictive accuracy by ~10% via heteroscedastic uncertainty modeling.
+
+(You can shorten or expand previous roles as the template allows.)
+
+SKILLS (for Skills/Tech Stack section)
+- Languages: Python, SQL, JavaScript, MATLAB, C++
+- Frameworks: TensorFlow, PyTorch, Kedro, MLflow, FastAPI, Scikit‑learn, React
+- Generative AI: LangChain, LangGraph, LangSmith, CrewAI, Hugging Face, OpenAI, Ollama
+- Cloud & DevOps: AWS (Batch, S3, Lambda, SageMaker), Azure Pipelines, Docker, Terraform, GitHub Actions
+- Focus: Forecasting, anomaly detection, RAG, AI agents, Bayesian ML
+
+PUBLICATIONS (if the template has a Publications or Achievements area)
+- Analytically Tractable Heteroscedastic Uncertainty Quantification in Bayesian Neural Networks for Regression Tasks – Neurocomputing, 2023.
+- Approximate Gaussian Variance Inference for State‑Space Models – International Journal of Adaptive Control and Signal Processing, 2023.
