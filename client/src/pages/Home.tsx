@@ -29,7 +29,7 @@ export default function Home() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
               </span>
-              Open to new opportunities
+              Open to AI/ML roles & technical writing opportunities
             </div>
             
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
@@ -37,9 +37,13 @@ export default function Home() {
               <span className="text-gradient">Deka</span>
             </h1>
             
-            <p className="text-xl text-muted-foreground mb-8 max-w-lg leading-relaxed">
-              I'm a Senior AI/ML Developer & Technical Writer with 5+ years of experience building forecasting, anomaly detection, and vertical AI agent systems.
+            <p className="text-xl text-muted-foreground mb-4 max-w-lg leading-relaxed">
+              I build AI agents, forecasting systems, and anomaly detection pipelines that ship to production.
             </p>
+            
+            <div className="text-sm font-medium text-primary/80 mb-8 font-mono tracking-wide">
+              Senior AI/ML Developer · Machine Learning Researcher · Technical Writer
+            </div>
             
             <div className="flex flex-wrap gap-4">
               <Link href="/projects">
@@ -100,19 +104,14 @@ export default function Home() {
                   <span className="text-green-400">'Bhargob Deka'</span>,
                 </div>
                 <div className="pl-4 flex gap-2">
-                  <span className="text-blue-300">skills:</span>
-                  <span className="text-yellow-300">['AI', 'ML', 'React']</span>,
+                  <span className="text-blue-300">role:</span>
+                  <span className="text-green-400">'Senior AI/ML Developer'</span>,
                 </div>
                 <div className="pl-4 flex gap-2">
-                  <span className="text-blue-300">highlyMotivated:</span>
-                  <span className="text-pink-500">true</span>,
-                </div>
-                <div className="pl-4 flex gap-2">
-                  <span className="text-blue-300">freelancingAI:</span>
-                  <span className="text-pink-500">true</span>
+                  <span className="text-blue-300">specialties:</span>
+                  <span className="text-yellow-300">['AI Agents', 'Forecasting', 'Anomaly Detection', 'RAG']</span>
                 </div>
                 <div className="text-yellow-300">{`}`}</div>
-                <div className="pt-2 text-slate-500">// Check console for more info...</div>
               </div>
             </div>
             

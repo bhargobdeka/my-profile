@@ -49,8 +49,8 @@ export function Navbar() {
           <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
             <Terminal className="w-6 h-6 text-primary" />
           </div>
-          <span className="font-bold text-xl tracking-tight font-mono">
-            Bhargob<span className="text-primary">Deka</span>
+          <span className="font-semibold text-lg tracking-tight font-mono text-muted-foreground group-hover:text-foreground transition-colors">
+            Bhargob<span className="text-primary/80">Deka</span>
           </span>
         </Link>
 
