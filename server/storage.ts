@@ -112,35 +112,46 @@ export class DatabaseStorage implements IStorage {
   async getArticles(): Promise<Article[]> {
     const mediumUsername = process.env.MEDIUM_USERNAME || "bhargobdeka11";
     
+    const mediumArticles: Article[] = [];
     try {
       const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@${mediumUsername}`);
       if (response.ok) {
         const data = await response.json();
         if (data.status === 'ok') {
-          return data.items.map((item: any) => ({
+          mediumArticles.push(...data.items.map((item: any) => ({
             title: item.title,
             link: item.link,
             pubDate: item.pubDate,
             thumbnail: item.thumbnail,
             author: item.author,
             categories: item.categories
-          }));
+          })));
         }
       }
     } catch (error) {
       console.error("Failed to fetch Medium articles:", error);
     }
 
-    return [
+    const clientArticles: Article[] = [
       {
-        title: "Building Production RAG Systems",
-        link: "https://medium.com/@bhargobdeka11",
-        pubDate: "2024-01-01",
+        title: "How to build a RAG pipeline from scratch in 2026 for Kapa.ai",
+        link: "https://kapa.ai/blog",
+        pubDate: "2026-01-01",
         thumbnail: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80",
         author: "Bhargob Deka",
-        categories: ["Generative AI", "RAG"]
+        categories: ["RAG", "Kapa.ai", "AI Engineering"]
+      },
+      {
+        title: "Evaluating Python Libraries for Converting PDF to Text — A 2026 Comparison and Evaluation Guide for Unstract",
+        link: "https://unstract.com/blog",
+        pubDate: "2026-01-15",
+        thumbnail: "https://images.unsplash.com/photo-1558494949-efc02570fbc9?w=800&q=80",
+        author: "Bhargob Deka",
+        categories: ["Python", "Unstract", "Data Processing"]
       }
     ];
+
+    return [...clientArticles, ...mediumArticles];
   }
 
   async getExperience(): Promise<Experience[]> {
