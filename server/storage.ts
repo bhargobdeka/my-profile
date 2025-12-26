@@ -145,7 +145,7 @@ export class DatabaseStorage implements IStorage {
       {
         title: "Evaluating Python Libraries for Converting PDF to Text — A 2026 Comparison and Evaluation Guide",
         link: "https://unstract.com/blog",
-        pubDate: "2026-01-15",
+        pubDate: "2025-12-18",
         thumbnail: "https://images.unsplash.com/photo-1558494949-efc02570fbc9?w=800&q=80",
         author: "Bhargob Deka",
         categories: ["Python", "Data Processing"],
