@@ -50,7 +50,7 @@ export function Navbar() {
             <Terminal className="w-6 h-6 text-primary" />
           </div>
           <span className="font-bold text-xl tracking-tight font-mono">
-            Dev<span className="text-primary">Portfolio</span>
+            Bhargob<span className="text-primary">Deka</span>
           </span>
         </Link>
 
