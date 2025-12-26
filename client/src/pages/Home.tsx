@@ -4,6 +4,7 @@ import { ArrowRight, Code, PenTool, Terminal, Download } from "lucide-react";
 import { useProjects, useArticles } from "@/hooks/use-portfolio";
 import { ProjectCard } from "@/components/ProjectCard";
 import { ArticleCard } from "@/components/ArticleCard";
+import profilePhoto from "@assets/IMG_20180302_125311_810_1766766361029.jpg";
 
 export default function Home() {
   const { data: projects, isLoading: projectsLoading } = useProjects();
@@ -67,8 +68,20 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative hidden md:block"
+            className="relative hidden md:flex flex-col gap-6"
           >
+            {/* Profile Photo */}
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-blue-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+              <div className="relative bg-background rounded-2xl overflow-hidden aspect-[4/5] shadow-2xl border border-border">
+                <img 
+                  src={profilePhoto} 
+                  alt="Bhargob Deka" 
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                />
+              </div>
+            </div>
+
             <div className="relative z-10 bg-gradient-to-tr from-slate-900 to-slate-800 rounded-2xl p-6 shadow-2xl border border-white/10 rotate-3 hover:rotate-0 transition-all duration-500">
               <div className="flex items-center gap-2 mb-4 border-b border-white/10 pb-4">
                 <div className="w-3 h-3 rounded-full bg-red-500" />
