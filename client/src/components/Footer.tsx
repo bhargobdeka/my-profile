@@ -1,4 +1,4 @@
-import { Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { Github, Linkedin, PenTool, Mail } from "lucide-react";
 
 export function Footer() {
   return (
@@ -6,23 +6,23 @@ export function Footer() {
       <div className="container mx-auto px-4 py-12">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex flex-col gap-2 text-center md:text-left">
-            <h3 className="font-bold text-lg font-mono">DevPortfolio</h3>
+            <h3 className="font-bold text-lg font-mono text-primary">Bhargob Deka</h3>
             <p className="text-sm text-muted-foreground max-w-xs">
-              Building digital experiences with code and creativity.
-              Focused on performance, accessibility, and modern aesthetics.
+              Senior AI/ML Developer & Technical Writer. 
+              Building intelligent systems and sharing practical AI knowledge.
             </p>
           </div>
 
           <div className="flex items-center gap-6">
-            <SocialLink href="https://github.com" icon={<Github size={20} />} label="GitHub" />
-            <SocialLink href="https://linkedin.com" icon={<Linkedin size={20} />} label="LinkedIn" />
-            <SocialLink href="https://twitter.com" icon={<Twitter size={20} />} label="Twitter" />
-            <SocialLink href="mailto:hello@example.com" icon={<Mail size={20} />} label="Email" />
+            <SocialLink href="https://github.com/bhargobdeka" icon={<Github size={20} />} label="GitHub" />
+            <SocialLink href="https://linkedin.com/in/bhargobdeka" icon={<Linkedin size={20} />} label="LinkedIn" />
+            <SocialLink href="https://medium.com/@bhargobdeka11" icon={<PenTool size={20} />} label="Medium" />
+            <SocialLink href="mailto:bhargobdeka11@gmail.com" icon={<Mail size={20} />} label="Email" />
           </div>
         </div>
         
         <div className="mt-8 pt-8 border-t border-border/50 text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} DevPortfolio. Built with React & Tailwind.
+          © {new Date().getFullYear()} Bhargob Deka. Built with React & Tailwind.
         </div>
       </div>
     </footer>
