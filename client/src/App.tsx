@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 
 // Pages
 import Home from "@/pages/Home";
+import HomeVariant2 from "@/pages/HomeVariant2";
 import Projects from "@/pages/Projects";
 import Articles from "@/pages/Articles";
 import Experience from "@/pages/Experience";
@@ -17,6 +18,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/v2" component={HomeVariant2} />
       <Route path="/projects" component={Projects} />
       <Route path="/articles" component={Articles} />
       <Route path="/experience" component={Experience} />
