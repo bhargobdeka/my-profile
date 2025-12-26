@@ -67,33 +67,51 @@ export default function HomeVariant2() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="order-1 lg:order-2 relative"
+            className="order-1 lg:order-2 relative flex flex-col gap-6"
           >
-            <div className="relative aspect-[3/4] w-full max-w-md mx-auto">
-              <div className="absolute inset-0 bg-primary/20 rotate-6 rounded-3xl" />
-              <div className="absolute inset-0 bg-blue-600/10 -rotate-3 rounded-3xl" />
-              <img 
-                src={profilePhoto} 
-                alt="Bhargob Deka" 
-                className="relative z-10 w-full h-full object-cover rounded-3xl shadow-2xl border-4 border-background"
-              />
-              
-              {/* Floating Stat Card */}
-              <motion.div 
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-8 -left-8 z-20 bg-background/90 backdrop-blur-md p-6 rounded-2xl border border-border shadow-xl hidden sm:block"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="p-3 bg-primary/20 rounded-xl text-primary">
-                    <Brain size={24} />
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold">5+ Years</div>
-                    <div className="text-xs text-muted-foreground uppercase tracking-wider">AI Experience</div>
-                  </div>
+            {/* Profile Photo - Adjusted size to be consistent */}
+            <div className="relative group max-w-sm mx-auto w-full">
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-blue-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+              <div className="relative bg-background rounded-2xl overflow-hidden aspect-[4/5] shadow-2xl border border-border">
+                <img 
+                  src={profilePhoto} 
+                  alt="Bhargob Deka" 
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                />
+              </div>
+            </div>
+
+            <div className="relative z-10 bg-gradient-to-tr from-slate-900 to-slate-800 rounded-2xl p-6 shadow-2xl border border-white/10 rotate-3 hover:rotate-0 transition-all duration-500 max-w-sm mx-auto w-full">
+              <div className="flex items-center gap-2 mb-4 border-b border-white/10 pb-4">
+                <div className="w-3 h-3 rounded-full bg-red-500" />
+                <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                <div className="w-3 h-3 rounded-full bg-green-500" />
+              </div>
+              <div className="space-y-3 font-mono text-sm">
+                <div className="flex gap-2">
+                  <span className="text-pink-500">const</span>
+                  <span className="text-blue-400">developer</span>
+                  <span className="text-white">=</span>
+                  <span className="text-yellow-300">{`{`}</span>
                 </div>
-              </motion.div>
+                <div className="pl-4 flex gap-2">
+                  <span className="text-blue-300">name:</span>
+                  <span className="text-green-400">'Bhargob Deka'</span>,
+                </div>
+                <div className="pl-4 flex gap-2">
+                  <span className="text-blue-300">skills:</span>
+                  <span className="text-yellow-300">['AI', 'ML', 'React']</span>,
+                </div>
+                <div className="pl-4 flex gap-2">
+                  <span className="text-blue-300">highlyMotivated:</span>
+                  <span className="text-pink-500">true</span>,
+                </div>
+                <div className="pl-4 flex gap-2">
+                  <span className="text-blue-300">freelancingAI:</span>
+                  <span className="text-pink-500">true</span>
+                </div>
+                <div className="text-yellow-300">{`}`}</div>
+              </div>
             </div>
           </motion.div>
         </div>
