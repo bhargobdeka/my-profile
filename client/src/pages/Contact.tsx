@@ -1,5 +1,5 @@
 import { ContactForm } from "@/components/ContactForm";
-import { Mail, MapPin, Linkedin, Twitter } from "lucide-react";
+import { Mail, MapPin, Linkedin, PenTool } from "lucide-react";
 
 export default function Contact() {
   return (
