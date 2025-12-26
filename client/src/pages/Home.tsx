@@ -37,13 +37,9 @@ export default function Home() {
               <span className="text-gradient">Deka</span>
             </h1>
             
-            <p className="text-xl text-muted-foreground mb-4 max-w-lg leading-relaxed">
+            <p className="text-xl text-muted-foreground mb-8 max-w-lg leading-relaxed">
               I build AI agents, forecasting systems, and anomaly detection pipelines that ship to production.
             </p>
-            
-            <div className="text-sm font-medium text-primary/80 mb-8 font-mono tracking-wide">
-              Senior AI/ML Developer · Machine Learning Researcher · Technical Writer
-            </div>
             
             <div className="flex flex-wrap gap-4">
               <Link href="/projects">
