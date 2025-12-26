@@ -32,12 +32,12 @@ export default function Home() {
             </div>
             
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
-              Building <br/>
-              <span className="text-gradient">Digital Future</span>
+              Bhargob <br/>
+              <span className="text-gradient">Deka</span>
             </h1>
             
             <p className="text-xl text-muted-foreground mb-8 max-w-lg leading-relaxed">
-              I'm a Full Stack Engineer & Technical Writer specializing in building exceptional digital experiences. Currently focused on AI-driven applications and scalable architecture.
+              I'm a Senior AI/ML Developer & Technical Writer with 5+ years of experience building forecasting, anomaly detection, and vertical AI agent systems.
             </p>
             
             <div className="flex flex-wrap gap-4">
@@ -84,14 +84,18 @@ export default function Home() {
                 </div>
                 <div className="pl-4 flex gap-2">
                   <span className="text-blue-300">name:</span>
-                  <span className="text-green-400">'Alex Dev'</span>,
+                  <span className="text-green-400">'Bhargob Deka'</span>,
                 </div>
                 <div className="pl-4 flex gap-2">
                   <span className="text-blue-300">skills:</span>
-                  <span className="text-yellow-300">['React', 'Node', 'AI']</span>,
+                  <span className="text-yellow-300">['AI', 'ML', 'React']</span>,
                 </div>
                 <div className="pl-4 flex gap-2">
-                  <span className="text-blue-300">hardWorker:</span>
+                  <span className="text-blue-300">highlyMotivated:</span>
+                  <span className="text-pink-500">true</span>,
+                </div>
+                <div className="pl-4 flex gap-2">
+                  <span className="text-blue-300">freelancingAI:</span>
                   <span className="text-pink-500">true</span>
                 </div>
                 <div className="text-yellow-300">{`}`}</div>
