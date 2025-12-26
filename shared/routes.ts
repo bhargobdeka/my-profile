@@ -1,7 +1,21 @@
 import { z } from 'zod';
-import { insertMessageSchema, projectSchema, articleSchema, experienceSchema, publicationSchema, skillSchema } from './schema';
+import { 
+  insertMessageSchema, 
+  projectSchema, 
+  articleSchema, 
+  experienceSchema, 
+  publicationSchema, 
+  skillCategorySchema as skillSchema 
+} from './schema';
 
-export { insertMessageSchema, projectSchema, articleSchema, experienceSchema, publicationSchema, skillSchema };
+export { 
+  insertMessageSchema, 
+  projectSchema, 
+  articleSchema, 
+  experienceSchema, 
+  publicationSchema, 
+  skillSchema 
+};
 
 export const errorSchemas = {
   validation: z.object({
@@ -90,3 +104,5 @@ export function buildUrl(path: string, params?: Record<string, string | number>)
 export type ProjectResponse = z.infer<typeof api.projects.list.responses[200]>;
 export type ArticleResponse = z.infer<typeof api.articles.list.responses[200]>;
 export type ExperienceResponse = z.infer<typeof api.experience.list.responses[200]>;
+export type PublicationResponse = z.infer<typeof api.publications.list.responses[200]>;
+export type SkillResponse = z.infer<typeof api.skills.list.responses[200]>;
