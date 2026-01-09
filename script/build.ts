@@ -61,21 +61,22 @@ async function buildAll() {
   });
 
   console.log("building Vercel API handler...");
-  // Bundle the API handler with all dependencies for Vercel
-  // Source is in server/api.ts, output to api/index.js
-  // This way Vercel only sees the bundled JS file, not the TS source
+  // Bundle the API handler with ALL dependencies for Vercel
+  // Use CommonJS format to avoid ESM resolution issues
+  // Don't externalize anything - bundle everything into a single file
   await esbuild({
     entryPoints: ["server/api.ts"],
     platform: "node",
     target: "node20",
     bundle: true,
-    format: "esm",
+    format: "cjs",  // Use CommonJS to avoid ESM resolution issues
     outfile: "api/index.js",
     define: {
       "process.env.NODE_ENV": '"production"',
     },
     minify: false, // Keep readable for debugging
-    external: externals,
+    // Don't externalize anything - bundle all dependencies
+    external: [],
     logLevel: "info",
     alias: {
       "@shared": "./shared",
