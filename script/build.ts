@@ -1,6 +1,6 @@
 import { build as esbuild } from "esbuild";
 import { build as viteBuild } from "vite";
-import { rm, readFile } from "fs/promises";
+import { rm, readFile, writeFile } from "fs/promises";
 
 // server deps to bundle to reduce openat(2) syscalls
 // which helps cold start times
@@ -62,26 +62,44 @@ async function buildAll() {
 
   console.log("building Vercel API handler...");
   // Bundle the API handler with ALL dependencies for Vercel
-  // Use CommonJS format to avoid ESM resolution issues
-  // Don't externalize anything - bundle everything into a single file
+  // Use CommonJS format with .cjs extension to avoid ESM resolution issues
+  // This is the solution that worked for CoLiving project
   await esbuild({
     entryPoints: ["server/api.ts"],
     platform: "node",
     target: "node20",
     bundle: true,
-    format: "cjs",  // Use CommonJS to avoid ESM resolution issues
-    outfile: "api/index.js",
+    format: "cjs",
+    outfile: "api/handler.cjs",  // Explicit .cjs extension
     define: {
       "process.env.NODE_ENV": '"production"',
     },
-    minify: false, // Keep readable for debugging
-    // Don't externalize anything - bundle all dependencies
-    external: [],
+    minify: true,
+    keepNames: true,
+    external: [],  // Bundle everything - no externals
     logLevel: "info",
     alias: {
       "@shared": "./shared",
     },
   });
+
+  // Generate ESM wrapper that uses createRequire for CJS/ESM interop
+  // Vercel detects api/index.ts but executes the bundled handler.cjs
+  console.log("generating API wrapper...");
+  const wrapperContent = `// Auto-generated wrapper - do not edit manually
+// This file is regenerated during build
+import { createRequire } from "module";
+
+const require = createRequire(import.meta.url);
+const handler = require("./handler.cjs");
+
+export default async function(req: any, res: any): Promise<void> {
+  const fn = handler.default || handler;
+  return fn(req, res);
+}
+`;
+  await writeFile("api/index.ts", wrapperContent, "utf-8");
+  console.log("API wrapper generated at api/index.ts");
 }
 
 buildAll().catch((err) => {
