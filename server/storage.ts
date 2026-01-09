@@ -36,36 +36,40 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getProjects(): Promise<Project[]> {
-    const githubToken = process.env.GITHUB_TOKEN;
-    const githubUsername = process.env.GITHUB_USERNAME || "bhargobdeka";
+    try {
+      const githubToken = process.env.GITHUB_TOKEN;
+      const githubUsername = process.env.GITHUB_USERNAME || "bhargobdeka";
 
-    if (githubToken) {
-      try {
-        const response = await fetch(`https://api.github.com/users/${githubUsername}/repos?sort=updated&per_page=10`, {
-          headers: {
-            "Authorization": `token ${githubToken}`,
-            "Accept": "application/vnd.github.v3+json"
+      if (githubToken) {
+        try {
+          const response = await fetch(`https://api.github.com/users/${githubUsername}/repos?sort=updated&per_page=10`, {
+            headers: {
+              "Authorization": `token ${githubToken}`,
+              "Accept": "application/vnd.github.v3+json"
+            }
+          });
+          
+          if (response.ok) {
+            const repos = await response.json();
+            return repos.map((repo: any) => ({
+              id: String(repo.id),
+              name: repo.name,
+              description: repo.description,
+              html_url: repo.html_url,
+              homepage: repo.homepage,
+              language: repo.language,
+              stargazers_count: repo.stargazers_count,
+              forks_count: repo.forks_count,
+              topics: repo.topics || [],
+              updated_at: repo.updated_at
+            }));
           }
-        });
-        
-        if (response.ok) {
-          const repos = await response.json();
-          return repos.map((repo: any) => ({
-            id: String(repo.id),
-            name: repo.name,
-            description: repo.description,
-            html_url: repo.html_url,
-            homepage: repo.homepage,
-            language: repo.language,
-            stargazers_count: repo.stargazers_count,
-            forks_count: repo.forks_count,
-            topics: repo.topics || [],
-            updated_at: repo.updated_at
-          }));
+        } catch (error) {
+          console.error("Failed to fetch GitHub projects:", error);
         }
-      } catch (error) {
-        console.error("Failed to fetch GitHub projects:", error);
       }
+    } catch (error) {
+      console.error("Error in getProjects:", error);
     }
 
     // Featured Fallback Data based on user request
@@ -110,29 +114,30 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getArticles(): Promise<Article[]> {
-    const mediumUsername = process.env.MEDIUM_USERNAME || "bhargobdeka11";
-    
-    const mediumArticles: Article[] = [];
     try {
-      const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@${mediumUsername}`);
-      if (response.ok) {
-        const data = await response.json();
-        if (data.status === 'ok') {
-          mediumArticles.push(...data.items.map((item: any) => ({
-            title: item.title,
-            link: item.link,
-            pubDate: item.pubDate,
-            thumbnail: item.thumbnail,
-            author: item.author,
-            categories: item.categories
-          })));
+      const mediumUsername = process.env.MEDIUM_USERNAME || "bhargobdeka11";
+      
+      const mediumArticles: Article[] = [];
+      try {
+        const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@${mediumUsername}`);
+        if (response.ok) {
+          const data = await response.json();
+          if (data.status === 'ok') {
+            mediumArticles.push(...data.items.map((item: any) => ({
+              title: item.title,
+              link: item.link,
+              pubDate: item.pubDate,
+              thumbnail: item.thumbnail,
+              author: item.author,
+              categories: item.categories
+            })));
+          }
         }
+      } catch (error) {
+        console.error("Failed to fetch Medium articles:", error);
       }
-    } catch (error) {
-      console.error("Failed to fetch Medium articles:", error);
-    }
 
-    const clientArticles: Article[] = [
+      const clientArticles: Article[] = [
       {
         title: "How to build a RAG pipeline from scratch in 2026",
         link: "https://kapa.ai/blog",
@@ -154,6 +159,30 @@ export class DatabaseStorage implements IStorage {
     ];
 
     return [...clientArticles, ...mediumArticles];
+    } catch (error) {
+      console.error("Error in getArticles:", error);
+      // Return at least the client articles even if there's an error
+      return [
+        {
+          title: "How to build a RAG pipeline from scratch in 2026",
+          link: "https://kapa.ai/blog",
+          pubDate: "2026-01-01",
+          thumbnail: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80",
+          author: "Bhargob Deka",
+          categories: ["RAG", "AI Engineering"],
+          client: "Kapa.ai"
+        },
+        {
+          title: "Evaluating Python Libraries for Converting PDF to Text — A 2026 Comparison and Evaluation Guide",
+          link: "https://unstract.com/blog",
+          pubDate: "2025-12-18",
+          thumbnail: "https://images.unsplash.com/photo-1558494949-efc02570fbc9?w=800&q=80",
+          author: "Bhargob Deka",
+          categories: ["Python", "Data Processing"],
+          client: "Unstract"
+        }
+      ];
+    }
   }
 
   async getExperience(): Promise<Experience[]> {
