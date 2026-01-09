@@ -1,7 +1,7 @@
 import "dotenv/config";
 import express, { type Request, Response, NextFunction } from "express";
-import { storage } from "../server/storage";
-import { api } from "../shared/routes";
+import { storage } from "./storage";
+import { api } from "@shared/routes";
 import { z } from "zod";
 
 // Create Express app for API routes only

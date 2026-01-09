@@ -62,8 +62,10 @@ async function buildAll() {
 
   console.log("building Vercel API handler...");
   // Bundle the API handler with all dependencies for Vercel
+  // Source is in server/api.ts, output to api/index.js
+  // This way Vercel only sees the bundled JS file, not the TS source
   await esbuild({
-    entryPoints: ["api/index.ts"],
+    entryPoints: ["server/api.ts"],
     platform: "node",
     target: "node20",
     bundle: true,
@@ -75,6 +77,9 @@ async function buildAll() {
     minify: false, // Keep readable for debugging
     external: externals,
     logLevel: "info",
+    alias: {
+      "@shared": "./shared",
+    },
   });
 }
 
