@@ -65,6 +65,7 @@ async function buildAll() {
   await esbuild({
     entryPoints: ["api/index.ts"],
     platform: "node",
+    target: "node20",
     bundle: true,
     format: "esm",
     outfile: "api/index.js",
@@ -74,9 +75,6 @@ async function buildAll() {
     minify: false, // Keep readable for debugging
     external: externals,
     logLevel: "info",
-    alias: {
-      "@shared": "./shared",
-    },
   });
 }
 

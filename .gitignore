@@ -7,3 +7,4 @@ vite.config.ts.*
 .cursor/mcp-config.json
 .env
 .local/
+api/index.js
