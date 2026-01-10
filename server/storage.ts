@@ -37,39 +37,72 @@ export class DatabaseStorage implements IStorage {
 
   async getProjects(): Promise<Project[]> {
     try {
-      const githubToken = process.env.GITHUB_TOKEN;
+      const githubToken = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
       const githubUsername = process.env.GITHUB_USERNAME || "bhargobdeka";
 
-      if (githubToken) {
+      if (!githubToken) {
+        console.log("⚠️  GITHUB_TOKEN not set, using fallback data");
+        // Fall through to return fallback data
+      } else {
         try {
-          const response = await fetch(`https://api.github.com/users/${githubUsername}/repos?sort=updated&per_page=10`, {
+          console.log(`🔍 Fetching GitHub repos for user: ${githubUsername}`);
+          
+          // Fetch repos sorted by stars, get more to ensure we have enough for top 3
+          let response = await fetch(`https://api.github.com/users/${githubUsername}/repos?sort=stars&per_page=30&direction=desc`, {
             headers: {
-              "Authorization": `token ${githubToken}`,
-              "Accept": "application/vnd.github.v3+json"
+              "Authorization": `Bearer ${githubToken}`,
+              "Accept": "application/vnd.github.v3+json",
+              "User-Agent": "Portfolio-Site"
             }
           });
           
+          // If Bearer fails, try token format
+          if (response.status === 401) {
+            console.log("⚠️  Bearer format failed, trying token format...");
+            response = await fetch(`https://api.github.com/users/${githubUsername}/repos?sort=stars&per_page=30&direction=desc`, {
+              headers: {
+                "Authorization": `token ${githubToken}`,
+                "Accept": "application/vnd.github.v3+json",
+                "User-Agent": "Portfolio-Site"
+              }
+            });
+          }
+          
+          console.log(`📡 GitHub API response status: ${response.status}`);
+          
           if (response.ok) {
             const repos = await response.json();
-            return repos.map((repo: any) => ({
-              id: String(repo.id),
-              name: repo.name,
-              description: repo.description,
-              html_url: repo.html_url,
-              homepage: repo.homepage,
-              language: repo.language,
-              stargazers_count: repo.stargazers_count,
-              forks_count: repo.forks_count,
-              topics: repo.topics || [],
-              updated_at: repo.updated_at
-            }));
+            console.log(`✅ Successfully fetched ${repos.length} repositories`);
+            
+            // Sort by stars (descending) and take top 3
+            const topRepos = repos
+              .map((repo: any) => ({
+                id: String(repo.id),
+                name: repo.name,
+                description: repo.description,
+                html_url: repo.html_url,
+                homepage: repo.homepage,
+                language: repo.language,
+                stargazers_count: repo.stargazers_count,
+                forks_count: repo.forks_count,
+                topics: repo.topics || [],
+                updated_at: repo.updated_at
+              }))
+              .sort((a: any, b: any) => b.stargazers_count - a.stargazers_count)
+              .slice(0, 3);
+            
+            console.log(`⭐ Returning top 3 repos by stars: ${topRepos.map((r: any) => `${r.name} (${r.stargazers_count}⭐)`).join(", ")}`);
+            return topRepos;
+          } else {
+            const errorText = await response.text();
+            console.error(`❌ GitHub API error (${response.status}):`, errorText);
           }
         } catch (error) {
-          console.error("Failed to fetch GitHub projects:", error);
+          console.error("❌ Failed to fetch GitHub projects:", error);
         }
       }
     } catch (error) {
-      console.error("Error in getProjects:", error);
+      console.error("❌ Error in getProjects:", error);
     }
 
     // Featured Fallback Data based on user request
